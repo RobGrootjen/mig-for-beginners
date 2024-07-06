@@ -1,0 +1,21 @@
+#!/bin/bash
+apt-get update
+apt-get install -y apache2
+cat <<EOF > /var/www/html/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Frontend App</title>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+</body>
+</html>
+EOF
+
+cat <<EOF > /var/www/html/app.js
+console.log('Hello, World!');
+EOF
+
+systemctl restart apache2
